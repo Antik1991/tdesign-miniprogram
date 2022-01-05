@@ -9,7 +9,7 @@ interface Config {
   title: string;
   tConfirmBtn: string;
   content: string;
-  confirmBtn: string;
+  confirmBtn: string | Record<string, any>;
   cancelBtn: string;
   buttonLayout: 'horizontal' | 'vertical';
   actions: boolean | { name: string; primary?: boolean; style?: string }[];
@@ -144,13 +144,17 @@ Page({
       }
       // 确认弹窗-警示操作
       case 'warnConfirm': {
+        console.log(1);
+
         this.setData({
           show: true,
           currentKey: key,
           dialogConfig: modelConfigFactory({
             title,
             tConfirmBtn: 'custom-confirm-btn',
-            confirmBtn: '警示操作',
+            confirmBtn: {
+              content: '警示操作',
+            },
             cancelBtn: '取消',
           }),
         });

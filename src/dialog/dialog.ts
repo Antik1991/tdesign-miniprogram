@@ -26,48 +26,50 @@ export default class Dialog extends SuperComponent {
     classPrefix: name,
   };
 
-  onConfirm() {
-    this.setData({
-      visible: false,
-    });
-    this.triggerEvent('confirm');
-    this._onComfirm && this._onComfirm();
-  }
+  methods = {
+    onConfirm() {
+      this.setData({
+        visible: false,
+      });
+      this.triggerEvent('confirm');
+      this._onComfirm && this._onComfirm();
+    },
 
-  onCancel() {
-    this.close();
-    this.triggerEvent('cancel');
-  }
-
-  close() {
-    this.setData({
-      visible: false,
-    });
-    this.triggerEvent('close');
-  }
-
-  overlayClick() {
-    if (this.properties.closeOnOverlayClick) {
+    onCancel() {
       this.close();
-    }
-    this.triggerEvent('overlayClick');
-  }
+      this.triggerEvent('cancel');
+    },
 
-  onActionTap(e: any) {
-    const { index } = e.currentTarget.dataset;
+    close() {
+      this.setData({
+        visible: false,
+      });
+      this.triggerEvent('close');
+    },
 
-    this.setData({
-      visible: false,
-    });
-    this.triggerEvent('action', { index });
-    this._onAction && this._onAction({ index });
-  }
+    overlayClick() {
+      if (this.properties.closeOnOverlayClick) {
+        this.close();
+      }
+      this.triggerEvent('overlayClick');
+    },
 
-  openValueCBHandle(e) {
-    this.triggerEvent('open-type-event', e.detail);
-  }
+    onActionTap(e: any) {
+      const { index } = e.currentTarget.dataset;
 
-  openValueErrCBHandle(e) {
-    this.triggerEvent('open-type-error-event', e.detail);
-  }
+      this.setData({
+        visible: false,
+      });
+      this.triggerEvent('action', { index });
+      this._onAction && this._onAction({ index });
+    },
+
+    openValueCBHandle(e) {
+      this.triggerEvent('open-type-event', e.detail);
+    },
+
+    openValueErrCBHandle(e) {
+      this.triggerEvent('open-type-error-event', e.detail);
+    },
+  };
 }

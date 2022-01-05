@@ -18,6 +18,14 @@ export interface TdButtonProps {
     required?: boolean;
   };
   /**
+   * 按钮内容
+   */
+  content?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
    * 是否禁用按钮
    * @default false
    */
@@ -109,7 +117,14 @@ export interface TdButtonProps {
    */
   openType?: {
     type: StringConstructor;
-    value?: 'contact' | 'share' | 'getPhoneNumber' | 'getUserInfo' | 'launchApp' | 'openSetting' | 'feedback';
+    value?:
+      | 'contact'
+      | 'share'
+      | 'getPhoneNumber'
+      | 'getUserInfo'
+      | 'launchApp'
+      | 'openSetting'
+      | 'feedback';
     required?: boolean;
   };
   /**
@@ -202,4 +217,4 @@ export interface TdButtonProps {
     value?: boolean;
     required?: boolean;
   };
-};
+}

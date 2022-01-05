@@ -41,6 +41,7 @@
         {{cancelBtn}}
       </t-button>
       <slot name="cancelBtn" />
+      {{confirmBtn.content}} {{_.getTypeof(confirmBtn)}}
       <t-button
         wx:if="{{confirmBtn}}"
         t-class="{{classPrefix}}__button {{classPrefix}}__button-confirm {{cancelBtn ? classPrefix + '__button-half' : ''}} {{prefix}}-class-confirm"
@@ -53,9 +54,10 @@
         bind:launchapp="openValueCBHandle"
         bind:error="openValueErrCBHandle"
       >
-        {{confirmBtn}}
+        {{confirmBtn}} {{confirmBtn.content}} {{_.getTypeof(confirmBtn)}}
       </t-button>
       <slot name="confirmBtn" />
     </view>
   </view>
 </t-popup>
+<wxs src="./dialog.wxs" module="_" />
